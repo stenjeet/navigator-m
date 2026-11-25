@@ -1,0 +1,90 @@
+name: Bug report
+description: Report a reproducible problem in the simulator, localization or SLAM stack.
+title: "[Bug]: "
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to report a bug. Please fill in as much
+        detail as possible so the issue can be reproduced quickly.
+
+  - type: textarea
+    id: description
+    attributes:
+      label: Description
+      description: A clear and concise description of the problem.
+      placeholder: What went wrong?
+    validations:
+      required: true
+
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      description: Exact commands, launch files and parameters that trigger the problem.
+      placeholder: |
+        1. colcon build --symlink-install
+        2. source install/setup.bash
+        3. ros2 launch navigator_bringup simulation.launch.py
+        4. ...
+      render: shell
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behaviour
+      description: What did you expect to happen?
+    validations:
+      required: true
+
+  - type: textarea
+    id: actual
+    attributes:
+      label: Actual behaviour
+      description: What happened instead?
+    validations:
+      required: true
+
+  - type: input
+    id: os
+    attributes:
+      label: Operating system
+      placeholder: Ubuntu 24.04, WSL 2, macOS 15, ...
+    validations:
+      required: true
+
+  - type: input
+    id: ros
+    attributes:
+      label: ROS 2 distribution and version
+      placeholder: Jazzy, installed from apt or built from source
+    validations:
+      required: true
+
+  - type: input
+    id: python
+    attributes:
+      label: Python and key package versions
+      placeholder: Python 3.12, NumPy 2.1, rclpy 7.x
+
+  - type: textarea
+    id: logs
+    attributes:
+      label: Relevant logs and screenshots
+      description: Paste terminal output, stack traces or RViz screenshots.
+      render: shell
+
+  - type: checkboxes
+    id: checklist
+    attributes:
+      label: Checklist
+      options:
+        - label: I searched existing issues and did not find a duplicate.
+          required: true
+        - label: I can reproduce the problem on a clean checkout.
+          required: true
+        - label: I removed secrets and personal data from the logs above.
+          required: true

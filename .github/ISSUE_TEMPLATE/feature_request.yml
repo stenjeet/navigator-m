@@ -1,0 +1,56 @@
+name: Feature request
+description: Suggest a new capability or an improvement to the existing stack.
+title: "[Feature]: "
+labels: ["enhancement"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for sharing an idea. Describe the problem first, then the
+        solution you have in mind.
+
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem
+      description: What limitation or pain point are you trying to solve?
+      placeholder: I want to ..., but currently ...
+    validations:
+      required: true
+
+  - type: textarea
+    id: solution
+    attributes:
+      label: Proposed solution
+      description: How should the project behave after the change?
+      placeholder: Add a new launch argument that ...
+    validations:
+      required: true
+
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives considered
+      description: Other approaches, workarounds or existing tools you evaluated.
+
+  - type: dropdown
+    id: scope
+    attributes:
+      label: Area
+      description: Which part of the project does this affect?
+      options:
+        - Simulation and sensor models
+        - Localization
+        - Mapping and SLAM
+        - Robot description and visualization
+        - Packages, interfaces and launch files
+        - Tooling, tests and documentation
+        - Other
+    validations:
+      required: true
+
+  - type: textarea
+    id: context
+    attributes:
+      label: Additional context
+      description: Links, references, sketches or examples.

@@ -1,0 +1,36 @@
+# Parameters of the UWB and lidar models.
+#
+# simulation.launch.py passes this file to both nodes, so the file has one
+# section per node and the section name must match the node name the launch
+# file gives it.
+
+uwb_model_node:
+  ros__parameters:
+    random_seed: 12025
+    # UWB
+    uwb_sigma: 0.05
+    uwb_dropout_probability: 0.03
+    uwb_biases: [0.02, -0.03, 0.04, 0.01]   # per-anchor bias A1..A4 [m]
+    uwb_rate_hz: 10.0
+    # Scenario hooks of the analysis tool (defaults = nominal model).
+    # Anchor layout override as flat x, y, z triples. Leave the key out to use
+    # world.UWB_ANCHORS (the default arena layout); do NOT write `anchors: []`,
+    # because ROS cannot infer the type of an empty YAML sequence and stores
+    # the parameter as uninitialized. Set the same list in ekf.yaml, e.g.
+    #   anchors: [0.4, 0.4, 1.2, 7.6, 0.4, 1.2, 7.6, 7.6, 1.2, 0.4, 7.6, 1.2]
+    # Full UWB outage window [s] on the node clock, relative to the first
+    # timer callback: every range is NaN inside it. 0.0 / 0.0 disables it.
+    outage_start_s: 0.0
+    outage_end_s: 0.0
+
+lidar_model_node:
+  ros__parameters:
+    random_seed: 12025
+    # Lidar
+    lidar_sigma: 0.02
+    lidar_bias: 0.01
+    lidar_dropout_probability: 0.01
+    lidar_range_min: 0.12
+    lidar_range_max: 8.0
+    lidar_beams: 360
+    lidar_rate_hz: 10.0
